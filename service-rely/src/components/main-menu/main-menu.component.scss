@@ -1,0 +1,30 @@
+.menu-container {
+    position: fixed;
+    left: 0;
+    top: 73px;
+    min-width: 300px;
+    width: 15%;
+    height: 100vh;
+    background-color: #34495e;
+    color: #ffffff;
+    text-align: center;
+}
+
+h2 {
+    margin: 8px 0;
+    padding: 0 0 12px 0;
+    font-weight: 500;
+    border-bottom: 1px solid #4e5e6d;
+}
+
+li {
+    font-size: 18px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+li:hover {
+    color: #cbeaf0;
+}
+.main-element {
+    text-transform: uppercase;
+}

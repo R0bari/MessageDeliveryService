@@ -1,0 +1,20 @@
+.head-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: #34495e;
+    color: #ffffff;
+}
+.head-title {
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 25px;
+    background-color: #1F98AD;
+    
+    width: 300px;
+    font-family: -apple-system, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
