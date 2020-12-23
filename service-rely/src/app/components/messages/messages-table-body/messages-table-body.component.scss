@@ -1,0 +1,66 @@
+table {
+    width: 100%;
+    border-spacing: 0px;
+    border-collapse: collapse;
+    text-align: left;
+}
+tr {
+    border: 1px solid #e8e8e8;
+}
+tr:hover {
+    background-color: #e8e8e8;
+}
+td {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 150px;
+    padding: 15px 30px;
+}
+
+.select {
+    width: 73px;
+}
+.theme {
+    width: 180px;
+}
+.date {
+    width: 190px;
+    padding: 15px 15px 15px 30px;
+}
+.recipient {
+    width: 180px;
+    padding: 15px 20px 15px 30px;
+}
+.size {
+    width: 180px;
+    text-align: center;
+    padding: 15px 50px 15px 30px;
+}
+.delivery-service {
+    width: 246px;
+    padding: 15px 50px 15px 30px;
+}
+.status {
+    width: 180px;
+}
+.func-buttons {
+    vertical-align: top;
+    width: 260px;
+    float: right;
+    padding: 15px 0px 15px auto;
+    justify-content: end;
+}
+button {
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: rgb(255, 255, 255);
+    border: #e8e8e8 1px solid;
+    padding: 5px;
+    margin: 0px 5px;
+    cursor: pointer;
+}
+button:hover {
+    box-shadow: 0 9px 20px rgba(0,0,0,.07), 0 2px 6px rgba(0,0,0,.07);
+}

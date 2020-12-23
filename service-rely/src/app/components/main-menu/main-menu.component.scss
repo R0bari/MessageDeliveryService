@@ -1,7 +1,7 @@
 .menu-container {
     position: fixed;
     left: 0;
-    top: 73px;
+    top: 72px;
     min-width: 300px;
     width: 15%;
     height: 100vh;
@@ -24,6 +24,9 @@ li {
 }
 li:hover {
     color: #cbeaf0;
+}
+li:focus {
+    outline: none;
 }
 .main-element {
     text-transform: uppercase;
