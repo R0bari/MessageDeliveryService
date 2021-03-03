@@ -12,6 +12,9 @@ import { MessagesFilterComponent } from './components/messages/messages-filter/m
 import { MessagesTableComponent } from './components/messages/messages-table/messages-table.component';
 import { MessagesTableHeaderComponent } from './components/messages/messages-table-header/messages-table-header.component';
 import { MessagesTableBodyComponent } from './components/messages/messages-table-body/messages-table-body.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { DeliveryServicesModule } from './components/delivery-services/delivery-services.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { MessagesTableBodyComponent } from './components/messages/messages-table
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DeliveryServicesModule,
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
