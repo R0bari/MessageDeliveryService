@@ -8,11 +8,12 @@ import { DeliveryServicesService } from '../../services/delivery-services.servic
   styleUrls: ['./delivery-services-table.component.scss']
 })
 export class DeliveryServicesTableComponent implements OnInit {
-  books: string[] = [ 'book1', 'book2'];
   deliveryServices: DeliveryService[] = [];
+  tableColumns = ['deliveryServiceName', 'standartPriority'];
+
   constructor(public deliveryServicesService: DeliveryServicesService) { }
 
-  async ngOnInit() {
+  ngOnInit() {
     this.deliveryServicesService.getDeliveryServices()
       .subscribe((data: any) => this.deliveryServices = data);
   }
