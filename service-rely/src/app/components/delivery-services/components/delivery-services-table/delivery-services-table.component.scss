@@ -1,29 +1,13 @@
-.mat-header-cell, .mat-cell {
-    color: #333;
-    width: 200px;
-    text-align: left;
-}
-.mat-header-cell {
-    background-color: rgb(232, 252, 255);
-    font-size: 16px;
-}
-.mat-cell {
-    background-color: #fff;
-    border-top: 1px solid #e8e8e8;
-}
-.priority-cell, .priority-header {
-    text-align: center;
+@import "../../../../styles/table.scss";
+
+.service-logo {
+    width: 100px;
 }
 
 .logo-header, .logo-cell {
     width: 140px;
 }
 
-table {
-    border: 1px solid #e8e8e8;
-    border-top: none;
-}
-
-.service-logo {
-    width: 100px;
+.priority-cell, .priority-header {
+    text-align: center;
 }
