@@ -4,7 +4,7 @@
 .mat-header-cell, .mat-cell {
     color: #333;
     width: 200px;
-    text-align: left;
+    text-align: center;
 }
 .mat-header-cell {
     background-color: #f9f9f9;
@@ -25,3 +25,9 @@ table {
 .table-container {
     box-shadow: 0 9px 20px rgba(0,0,0,.07), 0 2px 6px rgba(0,0,0,.07);
 }
+
+@media (max-width: 1280px) {
+    .mat-header-cell, .mat-cell {
+        text-align: center;
+    }
+} 
