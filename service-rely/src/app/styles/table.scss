@@ -7,15 +7,21 @@
     text-align: left;
 }
 .mat-header-cell {
-    background-color: rgb(232, 252, 255);
-    font-size: 16px;
+    background-color: #f9f9f9;
+    border-bottom: none;
+    font-size: 14px;
 }
 .mat-cell {
     background-color: #fff;
     border-top: 1px solid #e8e8e8;
+    border-bottom: none;
 }
 
 table {
     border: 1px solid #e8e8e8;
     border-top: none;
+}
+
+.table-container {
+    box-shadow: 0 9px 20px rgba(0,0,0,.07), 0 2px 6px rgba(0,0,0,.07);
 }

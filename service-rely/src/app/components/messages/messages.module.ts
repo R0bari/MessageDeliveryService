@@ -4,6 +4,7 @@ import { MessagesTableComponent } from './components/messages-table/messages-tab
 import { MessagesHeaderComponent } from './components/messages-header/messages-header.component';
 import { MessagesPageComponent } from './pages/messages-page/messages-page.component';
 import { MatTableModule } from "@angular/material/table";
+import { MatSortModule } from "@angular/material/sort"
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
@@ -11,7 +12,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
   imports: [
     CommonModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule
   ]
 })
 export class MessagesModule { }
