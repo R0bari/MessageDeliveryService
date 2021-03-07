@@ -9,7 +9,7 @@ import { DeliveryServicesService } from '../../services/delivery-services.servic
 })
 export class DeliveryServicesTableComponent implements OnInit {
   deliveryServices: DeliveryService[] = [];
-  tableColumns = ['deliveryServiceName', 'standartPriority'];
+  tableColumns = ['deliveryServiceLogo', 'deliveryServiceName', 'standartPriority'];
 
   constructor(public deliveryServicesService: DeliveryServicesService) { }
 
