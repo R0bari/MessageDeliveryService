@@ -5,13 +5,15 @@ import { DeliveryServicesTableComponent } from './components/delivery-services-t
 import { MatTableModule } from "@angular/material/table";
 import { DeliveryServicesPageComponent } from './pages/delivery-services-page/delivery-services-page.component';
 import { DeliveryServicesHeaderComponent } from './components/delivery-services-header/delivery-services-header.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [DeliveryServicesTableComponent, DeliveryServicesPageComponent, DeliveryServicesHeaderComponent],
   imports: [
     CommonModule,
     BrowserModule,
-    MatTableModule
+    MatTableModule,
+    SharedModule
   ]
 })
 export class DeliveryServicesModule { }

@@ -6,6 +6,7 @@ import { MessagesPageComponent } from './pages/messages-page/messages-page.compo
 import { MatTableModule } from "@angular/material/table";
 import { MatSortModule } from "@angular/material/sort"
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [MessagesTableComponent, MessagesHeaderComponent, MessagesPageComponent],
@@ -13,7 +14,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     CommonModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    SharedModule
   ]
 })
 export class MessagesModule { }

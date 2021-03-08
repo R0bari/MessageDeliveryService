@@ -2,13 +2,15 @@
     <table mat-table matSort [dataSource]="dataSource">
         <ng-container matColumnDef="contactName">
             <th class="table-header" mat-header-cell mat-sort-header *matHeaderCellDef>Кому</th>
-            <td class="table-cell" mat-cell *matCellDef="let message">
-                {{message.destinationEmail}}
+            <td class="table-cell" mat-cell *matCellDef="let contact">
+                {{contact.contactName}}
             </td>
         </ng-container>
         <ng-container matColumnDef="contactEmail">
             <th class="table-header" mat-header-cell mat-sort-header *matHeaderCellDef>Тема</th>
-            <td class="table-cell" mat-cell *matCellDef="let message"> {{message.theme ? message.theme : '<Без темы>'}} </td>
+            <td class="table-cell" mat-cell *matCellDef="let contact"> 
+                {{contact.contactEmail}} 
+            </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
         <tr class="table-row" mat-row *matRowDef="let myRowData; columns: tableColumns"></tr>

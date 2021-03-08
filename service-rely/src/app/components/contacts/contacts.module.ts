@@ -6,6 +6,7 @@ import { ContactsPageComponent } from './pages/contacts-page/contacts-page.compo
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MatSortModule } from '@angular/material/sort';
     CommonModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    SharedModule
   ]
 })
 export class ContactsModule { }

@@ -12,7 +12,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { DeliveryServicesModule } from './components/delivery-services/delivery-services.module';
 import { MessagesModule } from './components/messages/messages.module';
 import { ContactsModule } from './components/contacts/contacts.module';
-import { SharedModule } from './components/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +27,6 @@ import { SharedModule } from './components/shared/shared.module';
     DeliveryServicesModule,
     MessagesModule,
     ContactsModule,
-    SharedModule,
     BrowserAnimationsModule,
     HttpClientModule
   ],
