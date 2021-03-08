@@ -12,4 +12,8 @@ export class MessagesService {
   getMessages() {
     return this.http.get(environment.defaultUrl + 'messages');
   }
+
+  deleteMessage(id: number) {
+    return this.http.delete(environment.defaultUrl + 'messages/' + id);
+  }
 }
