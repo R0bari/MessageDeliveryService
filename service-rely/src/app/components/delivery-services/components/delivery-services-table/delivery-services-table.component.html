@@ -12,7 +12,9 @@
             <td class="table-cell" mat-cell *matCellDef="let service"> {{service.deliveryServiceName}} </td>
         </ng-container>
         <ng-container matColumnDef="standartPriority">
-            <th class="priority-header" mat-header-cell *matHeaderCellDef> Приоритет сервиса </th>
+            <th class="priority-header" mat-header-cell *matHeaderCellDef> 
+                <p>Приоритет сервиса</p>
+                <p class="description">(Чем ближе к 0, тем выше)</p> </th>
             <td class="priority-cell" mat-cell *matCellDef="let service"> {{service.standartPriority}} </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>

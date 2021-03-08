@@ -1,0 +1,20 @@
+<div class="table-container">
+    <table mat-table matSort [dataSource]="dataSource">
+        <ng-container matColumnDef="contactName">
+            <th class="table-header" mat-header-cell mat-sort-header *matHeaderCellDef>Кому</th>
+            <td class="table-cell" mat-cell *matCellDef="let message">
+                {{message.destinationEmail}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="contactEmail">
+            <th class="table-header" mat-header-cell mat-sort-header *matHeaderCellDef>Тема</th>
+            <td class="table-cell" mat-cell *matCellDef="let message"> {{message.theme ? message.theme : '<Без темы>'}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+        <tr class="table-row" mat-row *matRowDef="let myRowData; columns: tableColumns"></tr>
+    </table>
+    <mat-paginator 
+        [pageSizeOptions]="[10, 25, 50]"
+        showFirstLastButtons>
+    </mat-paginator> 
+</div>
