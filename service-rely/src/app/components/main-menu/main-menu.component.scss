@@ -2,8 +2,7 @@
     position: fixed;
     left: 0;
     top: 72px;
-    min-width: 300px;
-    width: 15%;
+    width: 240px;
     height: 100vh;
     background-color: #34495e;
     color: #ffffff;
@@ -18,9 +17,11 @@ h2 {
 }
 
 li {
+    text-align: left;
     font-size: 18px;
-    margin: 10px 0;
+    margin: 10px 30px;
     cursor: pointer;
+    list-style-type: none; 
 }
 li:hover {
     color: #cbeaf0;
@@ -30,4 +31,10 @@ li:focus {
 }
 .main-element {
     text-transform: uppercase;
+}
+
+.bi {
+    margin: 0 4px -2px 0;
+    width: 16px;
+    height: 16px;
 }

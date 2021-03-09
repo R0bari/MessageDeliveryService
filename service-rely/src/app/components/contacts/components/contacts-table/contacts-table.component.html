@@ -1,13 +1,13 @@
 <div class="table-container">
     <table mat-table matSort [dataSource]="dataSource">
         <ng-container matColumnDef="contactName">
-            <th class="table-header" mat-header-cell mat-sort-header *matHeaderCellDef>Кому</th>
+            <th class="table-header" mat-header-cell mat-sort-header *matHeaderCellDef>Имя</th>
             <td class="table-cell" mat-cell *matCellDef="let contact">
                 {{contact.contactName}}
             </td>
         </ng-container>
         <ng-container matColumnDef="contactEmail">
-            <th class="table-header" mat-header-cell mat-sort-header *matHeaderCellDef>Тема</th>
+            <th class="table-header" mat-header-cell mat-sort-header *matHeaderCellDef>Адрес</th>
             <td class="table-cell" mat-cell *matCellDef="let contact"> 
                 {{contact.contactEmail}} 
             </td>
