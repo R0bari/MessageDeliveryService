@@ -9,11 +9,8 @@
     text-align: center;
 }
 
-h2 {
-    margin: 8px 0;
-    padding: 0 0 12px 0;
-    font-weight: 500;
-    border-bottom: 1px solid #4e5e6d;
+ul {
+    margin: 15px 0;
 }
 
 li {
@@ -30,6 +27,7 @@ li:focus {
     outline: none;
 }
 .main-element {
+    letter-spacing: 0.3px;
     text-transform: uppercase;
 }
 
