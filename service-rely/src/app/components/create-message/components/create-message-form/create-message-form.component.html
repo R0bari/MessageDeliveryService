@@ -1,0 +1,27 @@
+<form [formGroup]="form">
+    <mat-form-field appearance="outline">
+        <mat-label>Адрес получателя</mat-label>
+        <input matInput formControlName="destinationEmail">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Тема сообщения</mat-label>
+        <input matInput formControlName="theme">
+    </mat-form-field>
+    <mat-form-field class="body" appearance="outline">
+        <mat-label>Тело сообщения</mat-label>
+        <textarea formControlName="body"
+                    matInput
+                    appLineNowrap></textarea>
+    </mat-form-field>
+    <mat-checkbox class="htmlCheckbox" formControlName="htmlEnabled">HTML</mat-checkbox>
+    <mat-form-field appearance="outline">
+        <mat-label>Сервис доставки</mat-label>
+        <mat-select formControlName="chosenDeliveryService">
+          <mat-option  [value]="service.deliveryServiceId"
+                        *ngFor="let service of deliveryServices">
+            {{service.deliveryServiceName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    <button mat-raised-button (click)="onSubmit()">Создать</button>
+</form>

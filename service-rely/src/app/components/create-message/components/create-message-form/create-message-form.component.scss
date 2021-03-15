@@ -1,0 +1,36 @@
+form {
+    padding: 25px 0 0 30px;
+    width: 800px;
+}
+mat-form-field {
+    display: block;
+}
+
+textarea {
+    min-height: 400px;
+}
+
+mat-checkbox {
+    display: flex;
+    margin: 0 0 1.34375em 0;
+}
+
+// Checkbox color
+// ----------------------------------------------------------------
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-ripple-element {
+    opacity: 0.03 !important;
+    background-color: #1f98ad !important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #1f98ad;
+}
+// ----------------------------------------------------------------
+
+.mat-raised-button {
+    display: flex;
+    float: right;
+    color: white;
+    background-color: #1f98ad;
+}

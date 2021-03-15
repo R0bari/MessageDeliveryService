@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DeliveryServicesModule } from './components/delivery-services/delivery-services.module';
 import { MessagesModule } from './components/messages/messages.module';
 import { ContactsModule } from './components/contacts/contacts.module';
+import { CreateMessageModule } from './components/create-message/create-message.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ContactsModule } from './components/contacts/contacts.module';
     AppRoutingModule,
     DeliveryServicesModule,
     MessagesModule,
+    CreateMessageModule,
     ContactsModule,
     BrowserAnimationsModule,
     HttpClientModule
