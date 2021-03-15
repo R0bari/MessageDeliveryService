@@ -1,4 +1,5 @@
 export class DeliveryService {
+    deliveryServiceId: number;
     deliveryServiceName: string;
     standartPriority: number;
     connectionString: string;

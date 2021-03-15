@@ -24,17 +24,39 @@ export class CreateMessageFormComponent implements OnInit {
       .subscribe((data: DeliveryService[]) => this.deliveryServices = data);
   }
 
+  public onSubmit(): void {
+    if (this.form.valid) {
+      this.checkForm();
+    }
+    else {
+      alert("Не все поля заполнены корректно");
+    }
+    console.log(this.form.value);
+  }
+
   private createForm(): FormGroup {
     return this.formBuilder.group({
       destinationEmail: [null, Validators.required],
       theme: [null],
       body: [null],
       htmlEnabled: [null],
-      chosenDeliveryService: [null, Validators.required]
+      chosenDeliveryService: [null]
     });
   }
 
-  public onSubmit(): void {
-    console.log(this.form);
+  private checkForm(): void {
+    if (!this.form.value['theme']) {
+      this.form.get('theme').setValue('Без темы');
+    }
+    if (!this.form.value['body']) {
+      this.form.get('body').setValue('Без текста');
+    }
+    if (!this.form.value['htmlEnabled']) {
+      this.form.get('htmlEnabled').setValue(false);
+    }
+    if (!this.form.value["chosenDeliveryService"]) {
+      this.form.get('chosenDeliveryService').setValue(this.deliveryServices[0].deliveryServiceId);
+    }
   }
+
 }
