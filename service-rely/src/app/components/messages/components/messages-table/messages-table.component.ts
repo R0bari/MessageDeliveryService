@@ -21,24 +21,35 @@ export class MessagesTableComponent implements OnInit {
 
   constructor(public messagesService: MessagesService, private cdr: ChangeDetectorRef) { 
     this.messagesService.getMessages()
-      .subscribe((data: any) => {
-        this.dataSource = new MatTableDataSource(data);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-        this.cdr.detectChanges();
+      .subscribe(async (response: any) => {
+        if (response.isSuccess) {
+          this.updateMessagesList(response.data);
+        }
+        else {
+          this.updateMessagesList([]);
+        }
       });
   }
 
   ngOnInit() { }
 
+  updateMessagesList(messages: Message[]): void {
+    this.dataSource = new MatTableDataSource(messages);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    this.cdr.detectChanges();
+  }
+
   onDelete(messageId: number) {
     this.messagesService.deleteMessage(messageId)
-      .subscribe((data: any) => {
-        this.dataSource.data.splice(
-          this.dataSource.data.findIndex(m => m.messageId == messageId)
-        );
-        this.dataSource._updateChangeSubscription();
-        this.cdr.detectChanges();
+      .subscribe((response: any) => {
+        if (response.isSuccess) {
+          this.dataSource.data.splice(
+            this.dataSource.data.findIndex(m => m.messageId == messageId)
+          );
+          this.dataSource._updateChangeSubscription();
+          this.cdr.detectChanges();
+        }
       });
   }
 }

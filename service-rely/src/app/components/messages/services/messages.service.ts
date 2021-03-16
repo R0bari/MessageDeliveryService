@@ -11,7 +11,7 @@ export class MessagesService {
   constructor(private http: HttpClient) { }
 
   getMessages() {
-    return this.http.get(environment.defaultUrl + this.controllerUrl);
+    return this.http.get(environment.defaultUrl + this.controllerUrl + 'list');
   }
 
   deleteMessage(id: number) {

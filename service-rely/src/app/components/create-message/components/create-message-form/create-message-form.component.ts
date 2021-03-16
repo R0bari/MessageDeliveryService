@@ -46,16 +46,16 @@ export class CreateMessageFormComponent implements OnInit {
 
   private checkForm(): void {
     if (!this.form.value['theme']) {
-      this.form.get('theme').setValue('Без темы');
+      this.form.get('theme').patchValue('Без темы');
     }
     if (!this.form.value['body']) {
-      this.form.get('body').setValue('Без текста');
+      this.form.get('body').patchValue('Без текста');
     }
     if (!this.form.value['htmlEnabled']) {
-      this.form.get('htmlEnabled').setValue(false);
+      this.form.get('htmlEnabled').patchValue(false);
     }
     if (!this.form.value["chosenDeliveryService"]) {
-      this.form.get('chosenDeliveryService').setValue(this.deliveryServices[0].deliveryServiceId);
+      this.form.get('chosenDeliveryService').patchValue(this.deliveryServices[0].deliveryServiceId);
     }
   }
 
