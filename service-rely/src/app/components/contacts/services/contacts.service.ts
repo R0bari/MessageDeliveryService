@@ -8,14 +8,19 @@ import { Contact } from '../models/Contact';
   providedIn: 'root'
 })
 export class ContactsService {
+  controllerUrl: string = 'contacts/';
 
   constructor(private http: HttpClient) { }
 
-  getContacts(): Observable<Contact[]> {
-    return this.http.get<Contact[]>(environment.defaultUrl + 'contacts');
+  getContacts() {
+    return this.http.get(environment.defaultUrl + this.controllerUrl + 'list');
   }
 
   deleteContact(id: number) {
-    return this.http.delete(environment.defaultUrl + 'contacts');
+    return this.http.delete(environment.defaultUrl + this.controllerUrl + id);
+  }
+
+  insertContact(contact) {
+    return this.http.post(environment.defaultUrl + this.controllerUrl, contact);
   }
 }

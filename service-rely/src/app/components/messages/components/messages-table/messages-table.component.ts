@@ -20,36 +20,38 @@ export class MessagesTableComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(public messagesService: MessagesService, private cdr: ChangeDetectorRef) { 
-    this.messagesService.getMessages()
-      .subscribe(async (response: any) => {
-        if (response.isSuccess) {
-          this.updateMessagesList(response.data);
-        }
-        else {
-          this.updateMessagesList([]);
-        }
-      });
+    this.dataSource = new MatTableDataSource([]);
+    this.updateMessagesList();
   }
 
   ngOnInit() { }
 
-  updateMessagesList(messages: Message[]): void {
-    this.dataSource = new MatTableDataSource(messages);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-    this.cdr.detectChanges();
+  onUpdate(): void {
+    this.updateMessagesList();
   }
 
   onDelete(messageId: number) {
     this.messagesService.deleteMessage(messageId)
       .subscribe((response: any) => {
         if (response.isSuccess) {
-          this.dataSource.data.splice(
-            this.dataSource.data.findIndex(m => m.messageId == messageId)
-          );
+          this.dataSource.data
+            .splice(this.dataSource.data.findIndex(m => m.messageId == messageId), 1);
           this.dataSource._updateChangeSubscription();
           this.cdr.detectChanges();
         }
       });
   }
+  
+  updateMessagesList(): void {
+    this.messagesService.getMessages()
+      .subscribe(async (response: any) => {
+        if (response.isSuccess) {
+          this.dataSource = new MatTableDataSource(response.data);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+          this.cdr.markForCheck();
+        }
+      });
+  }
+
 }

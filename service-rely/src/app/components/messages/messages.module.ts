@@ -7,6 +7,7 @@ import { MatTableModule } from "@angular/material/table";
 import { MatSortModule } from "@angular/material/sort"
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { SharedModule } from '../shared/shared.module';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [MessagesTableComponent, MessagesHeaderComponent, MessagesPageComponent],
@@ -15,6 +16,7 @@ import { SharedModule } from '../shared/shared.module';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatButtonModule,
     SharedModule
   ]
 })

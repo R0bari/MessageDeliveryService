@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {environment} from 'src/environments/environment';
+import {Message} from '../components/models/Message';
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +17,9 @@ export class MessagesService {
 
   deleteMessage(id: number) {
     return this.http.delete(environment.defaultUrl + this.controllerUrl + id);
+  }
+
+  insertMessage(message: Message) {
+    return this.http.post(environment.defaultUrl + this.controllerUrl, message);
   }
 }

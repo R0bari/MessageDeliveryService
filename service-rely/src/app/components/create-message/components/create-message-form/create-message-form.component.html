@@ -17,11 +17,11 @@
     <mat-form-field appearance="outline">
         <mat-label>Сервис доставки</mat-label>
         <mat-select formControlName="chosenDeliveryService">
-          <mat-option  [value]="service.deliveryServiceId"
+          <mat-option  [value]="service"
                         *ngFor="let service of deliveryServices">
             {{service.deliveryServiceName}}
           </mat-option>
         </mat-select>
       </mat-form-field>
-    <button mat-raised-button (click)="onSubmit()">Создать</button>
+    <button mat-raised-button class="system-button" (click)="onSubmit()">Создать</button>
 </form>

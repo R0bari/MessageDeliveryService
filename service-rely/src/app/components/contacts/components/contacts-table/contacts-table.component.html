@@ -1,4 +1,5 @@
 <div class="table-container">
+    <button mat-raised-button class="add-button" (click)="onAdd()">Добавить</button>
     <table mat-table matSort [dataSource]="dataSource">
         <ng-container matColumnDef="contactName">
             <th class="table-header" mat-header-cell mat-sort-header *matHeaderCellDef>Имя</th>
@@ -10,6 +11,14 @@
             <th class="table-header" mat-header-cell mat-sort-header *matHeaderCellDef>Адрес</th>
             <td class="table-cell" mat-cell *matCellDef="let contact"> 
                 {{contact.contactEmail}} 
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="buttons">
+            <th class="table-header" mat-header-cell *matHeaderCellDef>
+                <button mat-raised-button class="system-button">Обновить</button>
+            </th>
+            <td class="table-cell" mat-cell *matCellDef="let contact"> 
+                <button mat-button class="delete-button" (click)="onDelete(contact.contactId)">Удалить</button>
             </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>

@@ -1,3 +1,5 @@
+@import "../../../../styles/table-buttons.scss";
+
 form {
     padding: 25px 0 0 30px;
     width: 800px;
@@ -28,9 +30,6 @@ mat-checkbox {
 }
 // ----------------------------------------------------------------
 
-.mat-raised-button {
-    display: flex;
+.system-button {
     float: right;
-    color: white;
-    background-color: #1f98ad;
 }

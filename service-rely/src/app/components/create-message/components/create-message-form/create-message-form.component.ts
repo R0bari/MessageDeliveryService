@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DeliveryService } from 'src/app/components/delivery-services/models/DeliveryService';
-import { DeliveryServicesService } from 'src/app/components/delivery-services/services/delivery-services.service';
-import { CreateMessageService } from '../../services/create-message.service';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {DeliveryService} from 'src/app/components/delivery-services/models/DeliveryService';
+import {DeliveryServicesService} from 'src/app/components/delivery-services/services/delivery-services.service';
+import {MessagesService} from 'src/app/components/messages/services/messages.service';
+import {Message} from './../../../messages/components/models/Message';
 
 @Component({
   selector: 'app-create-message-form',
@@ -16,7 +18,8 @@ export class CreateMessageFormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private deliveryServicesService: DeliveryServicesService,
-              private createMessageService: CreateMessageService) { }
+              private messagesService: MessagesService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.form = this.createForm();
@@ -30,8 +33,21 @@ export class CreateMessageFormComponent implements OnInit {
     }
     else {
       alert("Не все поля заполнены корректно");
+      return;
     }
-    console.log(this.form.value);
+
+    let message: Message = new Message(
+      this.form.get('theme').value,
+      this.form.get('body').value,
+      this.form.get('destinationEmail').value,
+      this.form.get('chosenDeliveryService').value
+    );
+    this.messagesService.insertMessage(message)
+      .subscribe((response: any) => {
+        if (response.isSuccess) {
+          this.router.navigate(['/messages']);
+        }
+      });
   }
 
   private createForm(): FormGroup {

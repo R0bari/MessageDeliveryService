@@ -1,6 +1,15 @@
 @import "../../../../styles/table.scss";
+@import "../../../../styles/table-buttons.scss";
 
 .table-container {
     width: 900px;
     margin: 0 auto;
+}
+
+.system-button, .delete-button, .add-button {
+    float: right;
+}
+
+.add-button {
+    margin: 5px 25px 5px 0;
 }

@@ -11,13 +11,13 @@
             <td class="table-cell" mat-cell *matCellDef="let message"> {{message.theme ? message.theme : '<Без темы>'}} </td>
         </ng-container>
         <ng-container matColumnDef="chosenDeliveryServiceId">
-            <th class="table-header chosenDeliveryService" mat-header-cell mat-sort-header *matHeaderCellDef>Выбранный сервис доставки</th>
+            <th class="table-header chosenDeliveryService" mat-header-cell mat-sort-header *matHeaderCellDef>Выбранный сервис</th>
             <td class="table-cell chosenDeliveryService" mat-cell *matCellDef="let message">
                 {{message.chosenDeliveryService.deliveryServiceName}}
             </td>
         </ng-container>
         <ng-container matColumnDef="usedDeliveryServiceId">
-            <th class="table-header chosenDeliveryService" mat-header-cell mat-sort-header *matHeaderCellDef>Использованный сервис доставки</th>
+            <th class="table-header chosenDeliveryService" mat-header-cell mat-sort-header *matHeaderCellDef>Использованный сервис</th>
             <td class="table-cell chosenDeliveryService" mat-cell *matCellDef="let message">
                 {{message.usedDeliveryService
                     ? message.usedDeliveryService.deliveryServiceName 
@@ -35,12 +35,11 @@
             <td class="table-cell" mat-cell *matCellDef="let message"> {{message.IsSent ? 'Доставлено': 'Не доставлено'}} </td>
         </ng-container>
         <ng-container matColumnDef="buttons">
-            <th class="table-header" mat-header-cell mat-sort-header *matHeaderCellDef></th>
+            <th class="table-header" mat-header-cell *matHeaderCellDef>
+                <button mat-raised-button class="system-button" (click)="onUpdate()">Обновить</button>
+            </th>
             <td class="table-cell buttons" mat-cell *matCellDef="let message">
-                <svg class="delete-message" (click)="onDelete(message.messageId)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                  </svg>
+                <button mat-button class="delete-button" (click)="onDelete(message.messageId)">Удалить</button>
             </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>

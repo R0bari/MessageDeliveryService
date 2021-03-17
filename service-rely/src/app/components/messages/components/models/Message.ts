@@ -1,12 +1,30 @@
 import { DeliveryService } from "src/app/components/delivery-services/models/DeliveryService";
 
-export interface Message {
+export class Message {
     messageId: number;
+    attachedFiles: any = null;
     theme: string;
     body: string;
+    destinationDate: Date = null;
     destinationEmail: string;
-    isSent: boolean;
+    size: number = 0;
     isScheduled: boolean;
-    scheduleDate: Date;
-    chosenDeliveryService: DeliveryService;
+    scheduleDate: Date = null;
+    isSent: boolean;
+    deliveryQueueId: any = 2;
+    chosenDeliveryService: DeliveryService = null;
+    chosenDeliveryServiceId: number;
+    usedDeliveryServiceId: number = null;
+    deliveryStatus: number = 0;
+    userId: number = 4;
+    
+
+    constructor(theme: string, body: string, destinationEmail: string, chosenDeliveryService: DeliveryService) {
+        this.theme = theme;
+        this.body = body;
+        this.destinationEmail = destinationEmail;
+        this.isSent = false;
+        this.isScheduled = false;
+        this.chosenDeliveryServiceId = chosenDeliveryService.deliveryServiceId;
+    }
 }
