@@ -17,7 +17,10 @@ export class CreateMessageFormComponent implements OnInit {
   deliveryServices: DeliveryService[] = [];
   chosenDeliveryService: any;
   isScheduled: boolean = false;
+  minScheduleDate: Date = new Date();
+  maxScheduleDate: Date = new Date('2031/01/01');
   isHtml: boolean = false;
+  isDeliveryServiceChosen = false;
 
   constructor(private formBuilder: FormBuilder,
     private deliveryServicesService: DeliveryServicesService,
@@ -26,15 +29,20 @@ export class CreateMessageFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.createForm();
-    this.deliveryServicesService
-      .getDeliveryServices()
-      .subscribe((response: any) => this.deliveryServices = response.data);
+    this.updateDeliveryServices();
   }
 
-  public onScheduleDateEnableChange(): void {
+  public onScheduledEnableChange(): void {
     this.isScheduled = !this.isScheduled;
     if (!this.isScheduled) {
       this.form.get('scheduleDate').patchValue(null);
+    }
+  }
+
+  public onDeliveryServiceChosenEnableChange(): void {
+    this.isDeliveryServiceChosen = !this.isDeliveryServiceChosen;
+    if (!this.isDeliveryServiceChosen) {
+      this.form.get('chosenDeliveryService').patchValue(null);
     }
   }
 
@@ -72,10 +80,10 @@ export class CreateMessageFormComponent implements OnInit {
   private createForm(): FormGroup {
     return this.formBuilder
       .group({
-        destinationEmail: [null, Validators.required],
         theme: [null],
         body: [null],
         htmlEnabled: [null],
+        destinationEmail: [null, Validators.required],
         chosenDeliveryService: [null],
         scheduleDate: [null]
       });
@@ -94,6 +102,12 @@ export class CreateMessageFormComponent implements OnInit {
     if (!this.form.value["chosenDeliveryService"]) {
       this.form.get('chosenDeliveryService').patchValue(this.deliveryServices[0]);
     }
+  }
+
+  public updateDeliveryServices(): void {
+    this.deliveryServicesService
+      .getDeliveryServices()
+      .subscribe((response: any) => this.deliveryServices = response.data);
   }
 
 }

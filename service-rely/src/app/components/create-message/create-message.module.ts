@@ -14,6 +14,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import {MatIconModule} from '@angular/material/icon';
+
 @NgModule({
   declarations: [CreateMessagePageComponent, CreateMessageHeaderComponent, CreateMessageFormComponent],
   imports: [
@@ -27,13 +29,14 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatIconModule,
     SharedModule,
     FormsModule,
     ReactiveFormsModule
   ],
   providers: [
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ]
 })
 export class CreateMessageModule {}
