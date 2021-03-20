@@ -11,6 +11,12 @@
 
 .scheduleDate {
     width: 280px;
+    &__text {
+        padding: 5px 10px;
+        background-color: #DBFDFF;
+        border: 1px solid #B7FAFF;
+        border-radius: 5px;
+    }
 }
 
 .system-button, .delete-button {

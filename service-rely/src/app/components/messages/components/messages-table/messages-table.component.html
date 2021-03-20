@@ -27,8 +27,10 @@
         <ng-container matColumnDef="scheduleDate">
             <th class="table-header scheduleDate" mat-header-cell mat-sort-header *matHeaderCellDef>Запланированная дата отправки</th>
             <td class="table-cell scheduleDate" mat-cell *matCellDef="let message">
-                {{message.scheduleDate ? message.scheduleDate : '<Не запланировано>'}}
-            </td>
+                <span [ngClass]="message.scheduleDate ? 'scheduleDate__text' : ''">
+                    {{message.scheduleDate ? toLocalDate(message.scheduleDate) : '<Не запланировано>'}}
+                </span>
+                </td>
         </ng-container>
         <ng-container matColumnDef="isSent">
             <th class="table-header" mat-header-cell mat-sort-header *matHeaderCellDef>Статус доставки</th>

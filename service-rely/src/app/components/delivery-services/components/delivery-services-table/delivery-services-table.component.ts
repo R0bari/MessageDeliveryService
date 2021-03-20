@@ -15,6 +15,6 @@ export class DeliveryServicesTableComponent implements OnInit {
 
   ngOnInit() {
     this.deliveryServicesService.getDeliveryServices()
-      .subscribe((data: any) => this.deliveryServices = data);
+      .subscribe((response: any) => this.deliveryServices = response.data);
   }
 }

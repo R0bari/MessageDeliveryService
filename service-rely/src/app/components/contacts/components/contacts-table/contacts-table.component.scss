@@ -2,14 +2,20 @@
 @import "../../../../styles/table-buttons.scss";
 
 .table-container {
-    width: 900px;
+    display: inline-block;
+    width: 750px;
     margin: 0 auto;
 }
 
-.system-button, .delete-button, .add-button {
+.mat-table-buttons {
+    width: 20%!important;
+}
+
+.system-button, .delete-button {
     float: right;
 }
 
 .add-button {
-    margin: 10px 25px 10px 0;
+    position: absolute;
+    margin: 10px 25px;
 }

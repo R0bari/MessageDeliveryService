@@ -19,12 +19,18 @@ export class Message {
     userId: number = 4;
     
 
-    constructor(theme: string, body: string, destinationEmail: string, chosenDeliveryService: DeliveryService) {
+    constructor(theme: string, 
+                body: string, 
+                destinationEmail: string, 
+                chosenDeliveryService: DeliveryService,
+                isScheduled: boolean,
+                scheduleDate: any) {
         this.theme = theme;
         this.body = body;
         this.destinationEmail = destinationEmail;
         this.isSent = false;
-        this.isScheduled = false;
+        this.isScheduled = isScheduled;
+        this.scheduleDate = scheduleDate;
         this.chosenDeliveryServiceId = chosenDeliveryService.deliveryServiceId;
     }
 }

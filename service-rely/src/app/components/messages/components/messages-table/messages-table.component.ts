@@ -54,4 +54,17 @@ export class MessagesTableComponent implements OnInit {
       });
   }
 
+  toLocalDate(dateString: string): string {
+    var date = new Date(dateString);
+    if (!date) {
+      return '';
+    }
+    return date.toLocaleDateString('ru-RU', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric'
+    })
+  }
 }

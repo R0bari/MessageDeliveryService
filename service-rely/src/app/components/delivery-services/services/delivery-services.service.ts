@@ -7,10 +7,11 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class DeliveryServicesService {
+  controllerUrl: string = 'services/';
 
   constructor(private http: HttpClient) { }
 
   getDeliveryServices() {
-    return this.http.get(environment.defaultUrl + 'services');
+    return this.http.get(environment.defaultUrl + this.controllerUrl + 'list');
   }
 }
