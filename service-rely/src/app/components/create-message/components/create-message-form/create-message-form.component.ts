@@ -53,7 +53,7 @@ export class CreateMessageFormComponent implements OnInit {
       this.form.get('body')
         .value,
       this.form.get('destinationEmail')
-        .value,
+        .value.toLowerCase(),
       this.form.get('chosenDeliveryService')
         .value,
       this.isScheduled,

@@ -8,33 +8,38 @@
         </ng-container>
         <ng-container matColumnDef="theme">
             <th class="table-header" mat-header-cell mat-sort-header *matHeaderCellDef>Тема</th>
-            <td class="table-cell" mat-cell *matCellDef="let message"> {{message.theme ? message.theme : '<Без темы>'}} </td>
+            <td class="table-cell" mat-cell *matCellDef="let message"> {{message.theme ? message.theme : '<Без темы>'}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="scheduleDate">
+            <th class="table-header scheduleDate" mat-header-cell mat-sort-header *matHeaderCellDef>Запланированная дата
+                отправки</th>
+            <td class="table-cell scheduleDate" mat-cell *matCellDef="let message">
+                <span [ngClass]="message.scheduleDate ? 'scheduleDate__text' : ''">
+                    {{message.scheduleDate ? toLocalDate(message.scheduleDate) : '<Не запланировано>'}}
+                </span>
+            </td>
         </ng-container>
         <ng-container matColumnDef="chosenDeliveryServiceId">
-            <th class="table-header chosenDeliveryService" mat-header-cell mat-sort-header *matHeaderCellDef>Выбранный сервис</th>
+            <th class="table-header chosenDeliveryService" mat-header-cell mat-sort-header *matHeaderCellDef>Выбранный
+                сервис</th>
             <td class="table-cell chosenDeliveryService" mat-cell *matCellDef="let message">
                 {{message.chosenDeliveryService.deliveryServiceName}}
             </td>
         </ng-container>
         <ng-container matColumnDef="usedDeliveryServiceId">
-            <th class="table-header chosenDeliveryService" mat-header-cell mat-sort-header *matHeaderCellDef>Использованный сервис</th>
+            <th class="table-header chosenDeliveryService" mat-header-cell mat-sort-header *matHeaderCellDef>
+                Использованный сервис</th>
             <td class="table-cell chosenDeliveryService" mat-cell *matCellDef="let message">
                 {{message.usedDeliveryService
-                    ? message.usedDeliveryService.deliveryServiceName 
-                    : '<Не доставлено>'}}
+                ? message.usedDeliveryService.deliveryServiceName
+                : '<Не доставлено>'}}
             </td>
-        </ng-container>
-        <ng-container matColumnDef="scheduleDate">
-            <th class="table-header scheduleDate" mat-header-cell mat-sort-header *matHeaderCellDef>Запланированная дата отправки</th>
-            <td class="table-cell scheduleDate" mat-cell *matCellDef="let message">
-                <span [ngClass]="message.scheduleDate ? 'scheduleDate__text' : ''">
-                    {{message.scheduleDate ? toLocalDate(message.scheduleDate) : '<Не запланировано>'}}
-                </span>
-                </td>
         </ng-container>
         <ng-container matColumnDef="isSent">
             <th class="table-header" mat-header-cell mat-sort-header *matHeaderCellDef>Статус доставки</th>
-            <td class="table-cell" mat-cell *matCellDef="let message"> {{message.IsSent ? 'Доставлено': 'Не доставлено'}} </td>
+            <td class="table-cell" mat-cell *matCellDef="let message"> {{message.IsSent ? 'Доставлено': 'Не
+                доставлено'}} </td>
         </ng-container>
         <ng-container matColumnDef="buttons">
             <th class="table-header" mat-header-cell *matHeaderCellDef>
@@ -47,8 +52,6 @@
         <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
         <tr class="table-row" mat-row *matRowDef="let myRowData; columns: tableColumns"></tr>
     </table>
-    <mat-paginator 
-        [pageSizeOptions]="[10, 25, 50]"
-        showFirstLastButtons>
-    </mat-paginator> 
+    <mat-paginator [pageSizeOptions]="[10, 25, 50]" showFirstLastButtons>
+    </mat-paginator>
 </div>

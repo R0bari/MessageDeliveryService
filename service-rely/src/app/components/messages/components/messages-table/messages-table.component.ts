@@ -12,8 +12,8 @@ import { Message } from '../models/Message';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MessagesTableComponent implements OnInit {
-  tableColumns = ['destinationEmail', 'theme', 'chosenDeliveryServiceId', 
-                  'usedDeliveryServiceId', 'scheduleDate', 'isSent', 'buttons'];
+  tableColumns = ['destinationEmail', 'theme', 'scheduleDate', 'chosenDeliveryServiceId', 
+                  'usedDeliveryServiceId', 'isSent', 'buttons'];
   dataSource: MatTableDataSource<Message>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
