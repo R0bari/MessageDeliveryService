@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MatDatepicker} from '@angular/material/datepicker';
 import {Router} from '@angular/router';
 import {DeliveryService} from 'src/app/components/delivery-services/models/DeliveryService';
 import {DeliveryServicesService} from 'src/app/components/delivery-services/services/delivery-services.service';
@@ -15,16 +16,34 @@ export class CreateMessageFormComponent implements OnInit {
   form: FormGroup;
   deliveryServices: DeliveryService[] = [];
   chosenDeliveryService: any;
+  isScheduled: boolean = false;
+  minScheduleDate: Date = new Date();
+  maxScheduleDate: Date = new Date('2031/01/01');
+  isHtml: boolean = false;
+  isDeliveryServiceChosen = false;
 
   constructor(private formBuilder: FormBuilder,
-              private deliveryServicesService: DeliveryServicesService,
-              private messagesService: MessagesService,
-              private router: Router) { }
+    private deliveryServicesService: DeliveryServicesService,
+    private messagesService: MessagesService,
+    private router: Router) {}
 
   ngOnInit(): void {
     this.form = this.createForm();
-    this.deliveryServicesService.getDeliveryServices()
-      .subscribe((data: DeliveryService[]) => this.deliveryServices = data);
+    this.updateDeliveryServices();
+  }
+
+  public onScheduledEnableChange(): void {
+    this.isScheduled = !this.isScheduled;
+    if (!this.isScheduled) {
+      this.form.get('scheduleDate').patchValue(null);
+    }
+  }
+
+  public onDeliveryServiceChosenEnableChange(): void {
+    this.isDeliveryServiceChosen = !this.isDeliveryServiceChosen;
+    if (!this.isDeliveryServiceChosen) {
+      this.form.get('chosenDeliveryService').patchValue(null);
+    }
   }
 
   public onSubmit(): void {
@@ -37,11 +56,19 @@ export class CreateMessageFormComponent implements OnInit {
     }
 
     let message: Message = new Message(
-      this.form.get('theme').value,
-      this.form.get('body').value,
-      this.form.get('destinationEmail').value,
-      this.form.get('chosenDeliveryService').value
+      this.form.get('theme')
+        .value,
+      this.form.get('body')
+        .value,
+      this.form.get('destinationEmail')
+        .value.toLowerCase(),
+      this.form.get('chosenDeliveryService')
+        .value,
+      this.isScheduled,
+      this.form.get('scheduleDate')
+        .value
     );
+
     this.messagesService.insertMessage(message)
       .subscribe((response: any) => {
         if (response.isSuccess) {
@@ -51,13 +78,15 @@ export class CreateMessageFormComponent implements OnInit {
   }
 
   private createForm(): FormGroup {
-    return this.formBuilder.group({
-      destinationEmail: [null, Validators.required],
-      theme: [null],
-      body: [null],
-      htmlEnabled: [null],
-      chosenDeliveryService: [null]
-    });
+    return this.formBuilder
+      .group({
+        theme: [null],
+        body: [null],
+        htmlEnabled: [null],
+        destinationEmail: [null, Validators.required],
+        chosenDeliveryService: [null],
+        scheduleDate: [null]
+      });
   }
 
   private checkForm(): void {
@@ -71,8 +100,14 @@ export class CreateMessageFormComponent implements OnInit {
       this.form.get('htmlEnabled').patchValue(false);
     }
     if (!this.form.value["chosenDeliveryService"]) {
-      this.form.get('chosenDeliveryService').patchValue(this.deliveryServices[0].deliveryServiceId);
+      this.form.get('chosenDeliveryService').patchValue(this.deliveryServices[0]);
     }
+  }
+
+  public updateDeliveryServices(): void {
+    this.deliveryServicesService
+      .getDeliveryServices()
+      .subscribe((response: any) => this.deliveryServices = response.data);
   }
 
 }

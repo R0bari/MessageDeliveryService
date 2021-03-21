@@ -1,7 +1,8 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort'
 import { MatTableDataSource } from '@angular/material/table';
+import {DeliveryStatuses} from 'src/app/components/delivery-services/models/DeliveryStatuses';
 import { MessagesService } from '../../services/messages.service';
 import { Message } from '../models/Message';
 
@@ -12,9 +13,19 @@ import { Message } from '../models/Message';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MessagesTableComponent implements OnInit {
-  tableColumns = ['destinationEmail', 'theme', 'chosenDeliveryServiceId', 
-                  'usedDeliveryServiceId', 'scheduleDate', 'isSent', 'buttons'];
+  tableColumns = ['destinationEmail', 
+                  'theme', 
+                  'scheduleDate', 
+                  'chosenDeliveryServiceId',
+                  'destinationDate',  
+                  'deliveryStatus', 
+                  'buttons'];
   dataSource: MatTableDataSource<Message>;
+  deliveryStatuses: any = {
+    0: 'Ожидает',
+    1: 'Доставлено',
+    2: 'Не доставлено'
+  }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -54,4 +65,41 @@ export class MessagesTableComponent implements OnInit {
       });
   }
 
+  toLocalDate(dateString: string): string {
+    var date = new Date(dateString);
+    if (!date) {
+      return '';
+    }
+    return date.toLocaleDateString('ru-RU', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric'
+    })
+  }
+
+  determineScheduleDateCSSClass(message: Message) {
+    if (this.isDatePast(message.scheduleDate)) {
+      return message.isSent
+        ? 'successful'
+        : 'failed';
+    }
+    return message.scheduleDate ? 'future' : '';
+  }
+
+  determineDeliveryStatisCSSClass(message: Message) {
+    switch(message.deliveryStatus) {
+      case DeliveryStatuses.awaiting: return 'scheduled';
+      case DeliveryStatuses.successful: return 'successful';
+      case DeliveryStatuses.failed: return 'failed';
+    }
+  }
+  private isDatePast(scheduleDate: Date) {
+    return scheduleDate && new Date(scheduleDate) < new Date();
+  }
+
+  getDeliveryStatusString(message: Message) : string {
+    return this.deliveryStatuses[message.deliveryStatus];
+  }
 }

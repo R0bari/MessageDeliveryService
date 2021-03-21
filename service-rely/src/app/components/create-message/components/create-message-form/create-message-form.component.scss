@@ -9,12 +9,33 @@ mat-form-field {
 }
 
 textarea {
-    min-height: 400px;
+    min-height: 200px;
+}
+
+.delivery-service-block {
+    display: flex;
+}
+
+.delivery-service {
+    float: left;
+}
+
+.delivery-service, .schedule-date {
+    width: 280px;
+}
+
+.mat-icon-reload {
+    float: left;
+    margin-left: 10px;
+    line-height: 55px;
+    cursor: pointer;
 }
 
 mat-checkbox {
     display: flex;
-    margin: 0 0 1.34375em 0;
+    flex-direction:row;
+    justify-content: flex-start;
+    margin: 0 1.34375em 1.34375em 0;
 }
 
 // Checkbox color
